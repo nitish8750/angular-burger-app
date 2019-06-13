@@ -16,7 +16,7 @@
           </button> 
           <div class="dropdown-menu" appDropdown aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" (click) = "addIngredients()" style="cursor: pointer">To shoping list</a>
-            <a class="dropdown-item" style="cursor: pointer" >Edit Recipe</a>
+            <a class="dropdown-item" style="cursor: pointer" [routerLink]="['edit']">Edit Recipe</a>
             <a class="dropdown-item" style="cursor: pointer">Delete Recipe</a>
           </div> 
       </div>
