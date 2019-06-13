@@ -6,7 +6,6 @@ export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
     private recipes: Recipe[] = [
         new Recipe(
-            1,
             'Burger', 
             'this is a Burger', 
             'https://www.maxpixel.net/static/photo/1x/Bio-Food-Home-Made-Recipe-Dishes-Kitchen-Meals-1175496.jpg',
@@ -16,7 +15,6 @@ export class RecipeService {
             ]
         ),
         new Recipe(
-            2,
             'Pizza', 
             'this is a Pizza', 
             'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
@@ -26,7 +24,6 @@ export class RecipeService {
             ]
             ),
         new Recipe(
-            3,
             'Pasta', 
             'this is a Pasta', 
             'https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/05/main/pasta-chickpea-sauce-1707p46.jpg?itok=Jmv3zJMU',
@@ -36,7 +33,6 @@ export class RecipeService {
             ]
             ),
         new Recipe(
-            4,
             'Sandwhich', 
             'this is a Sandwhich', 
             'https://i.kinja-img.com/gawker-media/image/upload/s--k01UEarS--/c_scale,f_auto,fl_progressive,q_80,w_800/mzq37sdpd7hw30pk1pkl.jpg',
@@ -50,8 +46,8 @@ export class RecipeService {
     getRecipe(){
         return this.recipes.slice();
     }
-    getSelectedRecipe(id: number){
-        return this.recipes.find(recipe => recipe.id === id);
+    getSelectedRecipe(index: number){
+        return this.recipes[index];
     }
 
     addRecipe(recipe: Recipe){
@@ -61,6 +57,11 @@ export class RecipeService {
 
     updateRecipe(index: number, newRecipe: Recipe){
         this.recipes[index] = newRecipe;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    deleteRecipe(index: number){
+        this.recipes.splice(index, 1);
         this.recipesChanged.next(this.recipes.slice());
     }
 }
