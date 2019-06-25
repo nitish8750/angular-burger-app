@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Adding Key
+
+Add the firebase key while calling urls as 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser' and 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword' as 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key='
+in auth.service.ts in line 26 and 37.
+
