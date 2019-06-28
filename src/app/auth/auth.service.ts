@@ -23,7 +23,7 @@ export class AuthService {
 
     signUp(email: string, password: string){
         return this.http.post<AuthResponseData>
-        ('https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser', 
+        ('https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAbSQs9OW2H34s_owYuc1AylVrjC2LQslU', 
             {
                 email,
                 password,
@@ -34,7 +34,7 @@ export class AuthService {
     }
     login(email: string, password: string){
         return this.http.post<AuthResponseData>
-        ('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword', 
+        ('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAbSQs9OW2H34s_owYuc1AylVrjC2LQslU', 
             {
                 email,
                 password,
@@ -74,7 +74,7 @@ export class AuthService {
         this.userLoginInterval = setTimeout(() => {
             this.logout();
         }, expirationDuration);
-    } 
+    }
     private handleAuthentication(resData: AuthResponseData){
         const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
         const user = new User(resData.email, resData.localId, resData.idToken,expirationDate);

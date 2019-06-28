@@ -26,6 +26,10 @@ export class RecipeEditComponent implements OnInit {
       )
   }
 
+  get ingredientsControls(){
+    return (this.recipeForm.get('ingredients') as FormArray).controls;
+  }
+
   private initForm(){
     let recipeName = '';
     let recipeDescription = '';
@@ -61,13 +65,6 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
-    //  let newRecipe = new Recipe(
-    //   Math.random() * 10,
-    //   this.recipeForm.value['name'], 
-    //   this.recipeForm.value['description'], 
-    //   this.recipeForm.value['imagePath'], 
-    //   this.recipeForm.value['ingredients']
-    //   )
     if(this.editMode){
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     }else {
